@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Mon emploi du temps Unistra",
+  "version": "1.0.0",
+  "description": "Masquez des cours et ajoutez vos événements personnels à l’emploi du temps Unistra.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://monemploidutemps.unistra.fr/*"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Personnaliser mon emploi du temps",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://monemploidutemps.unistra.fr/consult/calendar*"],
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

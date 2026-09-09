@@ -1,0 +1,17 @@
+name: Proposer une amélioration
+description: Suggérer une fonction liée à la personnalisation du calendrier.
+title: "[Idée] "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Besoin
+      description: Quel problème cette amélioration résoudrait-elle ?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposition
+      description: Décrivez le comportement souhaité.
+    validations:
+      required: true

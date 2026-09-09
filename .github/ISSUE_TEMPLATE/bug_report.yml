@@ -1,0 +1,32 @@
+name: Signaler un bug
+description: Un comportement de l’extension ne fonctionne pas comme prévu.
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Que s’est-il passé et quel résultat attendiez-vous ?
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Navigateur et version
+      placeholder: Chrome 140, Edge 140…
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Version de l’extension
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Étapes pour reproduire
+      description: Ne joignez aucune donnée personnelle ni capture d’un emploi du temps réel non anonymisé.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Informations complémentaires

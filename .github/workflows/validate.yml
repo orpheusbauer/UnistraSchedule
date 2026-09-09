@@ -1,0 +1,42 @@
+name: Validation
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Vérifier le JavaScript
+        run: |
+          node --check extension/content.js
+          node --check extension/background.js
+
+      - name: Vérifier le manifeste
+        run: node scripts/validate-manifest.mjs
+
+      - name: Créer le paquet Chrome Web Store
+        run: |
+          VERSION=$(node -p "require('./extension/manifest.json').version")
+          mkdir -p dist
+          cd extension
+          zip -r "../dist/mon-emploi-du-temps-unistra-${VERSION}.zip" .
+
+      - name: Publier le paquet comme artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-chrome-web-store
+          path: dist/*.zip

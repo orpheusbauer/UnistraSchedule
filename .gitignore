@@ -1,0 +1,16 @@
+# Paquets générés
+dist/
+*.zip
+
+# Outils de test locaux
+.playwright-cli/
+node_modules/
+
+# Fichiers système et éditeurs
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.tmp
