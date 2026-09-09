@@ -2,7 +2,7 @@
 
 ## Nom
 
-Mon emploi du temps Unistra
+Unistra Schedule
 
 ## Résumé court
 
@@ -10,7 +10,7 @@ Masquez des cours et ajoutez vos événements personnels à l’emploi du temps 
 
 ## Description détaillée
 
-Mon emploi du temps Unistra ajoute des outils de personnalisation au calendrier en ligne de l’Université de Strasbourg.
+Unistra Schedule ajoute des outils de personnalisation au calendrier en ligne de l’Université de Strasbourg.
 
 L’extension permet de :
 

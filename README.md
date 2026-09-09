@@ -1,4 +1,4 @@
-# Mon emploi du temps Unistra
+# Unistra Schedule
 
 Une extension Chrome indépendante pour adapter le calendrier en ligne de l’Université de Strasbourg à son propre emploi du temps.
 

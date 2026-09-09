@@ -4,7 +4,7 @@ Dernière mise à jour : 9 septembre 2026
 
 ## Objet
 
-Mon emploi du temps Unistra personnalise, dans le navigateur, le calendrier disponible sur `https://monemploidutemps.unistra.fr/consult/calendar`.
+Unistra Schedule personnalise, dans le navigateur, le calendrier disponible sur `https://monemploidutemps.unistra.fr/consult/calendar`.
 
 ## Données traitées
 
