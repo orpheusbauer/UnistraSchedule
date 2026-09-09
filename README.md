@@ -59,9 +59,9 @@ L’archive est créée dans `dist/`. Son `manifest.json` se trouve directement 
 
 ## Contribuer
 
-Les corrections et propositions sont bienvenues. Consultez [CONTRIBUTING.md](CONTRIBUTING.md) avant d’ouvrir une pull request.
+Le [code source](https://github.com/orpheusbauer/UnistraSchedule) est public. Les corrections et propositions sont bienvenues : consultez [CONTRIBUTING.md](CONTRIBUTING.md) avant d’ouvrir une pull request, ou utilisez les [issues GitHub](https://github.com/orpheusbauer/UnistraSchedule/issues) pour signaler un problème et suggérer une amélioration.
 
-Pour préparer une publication, utilisez le [guide Chrome Web Store](docs/CHROME_WEB_STORE.md). Les pratiques relatives aux données sont détaillées dans la [politique de confidentialité](PRIVACY.md).
+Pour préparer une publication, suivez le [guide de mise en version](docs/RELEASING.md), puis le [guide Chrome Web Store](docs/CHROME_WEB_STORE.md). Les pratiques relatives aux données sont détaillées dans la [politique de confidentialité](PRIVACY.md).
 
 ## Licence
 

@@ -38,4 +38,4 @@ L’utilisation des informations traitées par l’extension est limitée à sa 
 
 ## Contact
 
-Pour une question relative à cette politique, ouvrez une issue dans le dépôt GitHub public du projet. Pour signaler une vulnérabilité sans la rendre publique, utilisez la fonction de signalement privé de GitHub lorsqu’elle est activée.
+Pour une question relative à cette politique, [ouvrez une issue dans le dépôt GitHub public](https://github.com/orpheusbauer/UnistraSchedule/issues). Pour signaler une vulnérabilité sans la rendre publique, utilisez le [signalement privé de vulnérabilité](https://github.com/orpheusbauer/UnistraSchedule/security/advisories/new) lorsqu’il est activé.

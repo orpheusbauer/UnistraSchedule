@@ -25,6 +25,16 @@ Elle fonctionne uniquement sur la page du calendrier `monemploidutemps.unistra.f
 
 Ce projet est indépendant et n’est ni édité, ni approuvé, ni maintenu par l’Université de Strasbourg.
 
+Le code source est public. Les problèmes et propositions d’amélioration peuvent être suivis sur GitHub : `https://github.com/orpheusbauer/UnistraSchedule`.
+
+## URL de la page d’accueil
+
+https://github.com/orpheusbauer/UnistraSchedule
+
+## URL d’assistance
+
+https://github.com/orpheusbauer/UnistraSchedule/issues
+
 ## Objectif unique
 
 Permettre aux utilisateurs du calendrier `monemploidutemps.unistra.fr` de masquer des cours et d’y afficher leurs propres événements.

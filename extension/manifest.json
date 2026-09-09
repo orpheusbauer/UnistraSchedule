@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unistra Schedule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Masquez des cours et ajoutez vos événements personnels à l’emploi du temps Unistra.",
   "permissions": ["storage"],
   "host_permissions": ["https://monemploidutemps.unistra.fr/*"],

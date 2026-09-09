@@ -7,6 +7,7 @@ const repositoryRoot = resolve(scriptDirectory, "..");
 const extensionRoot = resolve(repositoryRoot, "extension");
 const manifestPath = resolve(extensionRoot, "manifest.json");
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const changelog = await readFile(resolve(repositoryRoot, "CHANGELOG.md"), "utf8");
 const errors = [];
 
 function check(condition, message) {
@@ -16,7 +17,8 @@ function check(condition, message) {
 check(manifest.manifest_version === 3, "manifest_version doit valoir 3");
 check(typeof manifest.name === "string" && manifest.name.length > 0, "name est obligatoire");
 check(typeof manifest.description === "string" && manifest.description.length <= 132, "description doit contenir au maximum 132 caractères");
-check(/^\d+(\.\d+){0,3}$/.test(manifest.version || ""), "version n’est pas valide");
+check(/^\d+\.\d+\.\d+$/.test(manifest.version || ""), "version doit respecter le format X.Y.Z");
+check(changelog.includes(`## [${manifest.version}] - `), `CHANGELOG.md doit contenir une section datée pour la version ${manifest.version}`);
 check(JSON.stringify(manifest.permissions) === JSON.stringify(["storage"]), "seule la permission storage est attendue");
 check(manifest.host_permissions?.length === 1 && manifest.host_permissions[0] === "https://monemploidutemps.unistra.fr/*", "l’accès hôte doit être limité à monemploidutemps.unistra.fr");
 check(manifest.content_scripts?.length === 1, "un seul content script est attendu");

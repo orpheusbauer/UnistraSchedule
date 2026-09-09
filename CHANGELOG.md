@@ -4,9 +4,20 @@ Ce fichier suit les principes de [Keep a Changelog](https://keepachangelog.com/f
 
 ## [Non publié]
 
-### Prévu
+_Aucun changement documenté._
 
-- Les changements destinés à la prochaine version seront documentés ici.
+## [1.0.1] - 2026-09-09
+
+### Modifié
+
+- le nom de l’extension passe de **Mon emploi du temps Unistra** à **Unistra Schedule**.
+
+### Ajouté
+
+- un processus documenté de gestion des versions et des publications ;
+- des contrôles automatiques entre la version du manifeste, le changelog et le tag Git ;
+- la création automatique d’une GitHub Release et de son paquet Chrome Web Store lors de l’envoi d’un tag de version ;
+- des liens vers le dépôt public et le suivi des problèmes dans la documentation et la fiche Chrome Web Store.
 
 ## [1.0.0] - 2026-09-09
 

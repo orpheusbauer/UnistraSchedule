@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Vérifier le JavaScript
+        run: |
+          node --check extension/content.js
+          node --check extension/background.js
+          node --check scripts/prepare-release.mjs
+          node --check scripts/check-release.mjs
+          node --check scripts/release-notes.mjs
+
+      - name: Vérifier la version
+        run: |
+          node scripts/validate-manifest.mjs
+          node scripts/check-release.mjs "$GITHUB_REF_NAME"
+
+      - name: Créer le paquet Chrome Web Store
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          cd extension
+          zip -r "../dist/unistra-schedule-${VERSION}.zip" .
+
+      - name: Préparer les notes de version
+        run: node scripts/release-notes.mjs "$GITHUB_REF_NAME" > release-notes.md
+
+      - name: Publier la GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          gh release create "$GITHUB_REF_NAME" \
+            "dist/unistra-schedule-${VERSION}.zip#Paquet Chrome Web Store" \
+            --verify-tag \
+            --fail-on-no-commits \
+            --title "Unistra Schedule ${GITHUB_REF_NAME}" \
+            --notes-file release-notes.md

@@ -2,7 +2,7 @@
 
 ## Signaler une vulnérabilité
 
-N’ouvrez pas d’issue publique pour une vulnérabilité exploitable ou une donnée personnelle exposée. Utilisez le **Private vulnerability reporting** du dépôt GitHub. Le mainteneur accusera réception du signalement et indiquera les prochaines étapes dès que possible.
+N’ouvrez pas d’issue publique pour une vulnérabilité exploitable ou une donnée personnelle exposée. Utilisez le [signalement privé de vulnérabilité](https://github.com/orpheusbauer/UnistraSchedule/security/advisories/new) du dépôt GitHub. Le mainteneur accusera réception du signalement et indiquera les prochaines étapes dès que possible.
 
 ## Périmètre
 

@@ -1,18 +1,18 @@
 # Publication sur le Chrome Web Store
 
-Ce guide accompagne la version `1.0.0`.
+Ce guide accompagne la version indiquée dans `extension/manifest.json`.
 
 ## 1. Préparer GitHub
 
-1. Créez un dépôt GitHub public vide.
-2. Dans ce dossier local, ajoutez le dépôt comme remote puis poussez la branche principale.
+1. Vérifiez que le dépôt public <https://github.com/orpheusbauer/UnistraSchedule> est à jour.
+2. Vérifiez que la branche principale et la dernière GitHub Release sont publiques.
 3. Activez **Settings → Security → Code security and analysis → Private vulnerability reporting**.
 4. Vérifiez que `PRIVACY.md` est accessible publiquement.
 
 La politique de confidentialité à fournir au Web Store pourra utiliser une URL de cette forme :
 
 ```text
-https://github.com/VOTRE-COMPTE/VOTRE-DEPOT/blob/main/PRIVACY.md
+https://github.com/orpheusbauer/UnistraSchedule/blob/main/PRIVACY.md
 ```
 
 ## 2. Tester et créer le paquet
@@ -43,7 +43,9 @@ Paramètres conseillés :
 - langue principale : français ;
 - catégorie : Productivité ;
 - visibilité : **Public** pour une publication ouverte, ou **Unlisted** pour un premier test par lien ;
-- achats intégrés : non.
+- achats intégrés : non ;
+- URL de la page d’accueil : `https://github.com/orpheusbauer/UnistraSchedule` ;
+- URL d’assistance : `https://github.com/orpheusbauer/UnistraSchedule/issues`.
 
 Importez :
 
@@ -70,8 +72,7 @@ Relisez la fiche, vérifiez l’adresse de contact du compte développeur et l�
 
 ## Publier une mise à jour
 
-1. Modifiez le code et `CHANGELOG.md`.
-2. Augmentez obligatoirement `version` dans `extension/manifest.json`.
-3. Recréez le ZIP avec `scripts/package.ps1`.
-4. Dans l’onglet **Package**, utilisez **Upload new package**.
-5. Envoyez la nouvelle version en révision.
+1. Préparez et publiez une nouvelle version en suivant [`RELEASING.md`](RELEASING.md).
+2. Récupérez le ZIP attaché à la GitHub Release, ou recréez-le avec `scripts/package.ps1`.
+3. Dans l’onglet **Package**, utilisez **Upload new package**.
+4. Envoyez la nouvelle version en révision.

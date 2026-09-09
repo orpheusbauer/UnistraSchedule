@@ -19,7 +19,7 @@ if ($LASTEXITCODE -ne 0) { throw "Le manifeste n'est pas valide" }
 
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
 New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
-$archivePath = Join-Path $outputRoot "mon-emploi-du-temps-unistra-$($manifest.version).zip"
+$archivePath = Join-Path $outputRoot "unistra-schedule-$($manifest.version).zip"
 
 if (Test-Path -LiteralPath $archivePath) {
   Remove-Item -LiteralPath $archivePath -Force

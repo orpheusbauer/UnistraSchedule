@@ -24,6 +24,9 @@ jobs:
         run: |
           node --check extension/content.js
           node --check extension/background.js
+          node --check scripts/prepare-release.mjs
+          node --check scripts/check-release.mjs
+          node --check scripts/release-notes.mjs
 
       - name: Vérifier le manifeste
         run: node scripts/validate-manifest.mjs
@@ -33,7 +36,7 @@ jobs:
           VERSION=$(node -p "require('./extension/manifest.json').version")
           mkdir -p dist
           cd extension
-          zip -r "../dist/mon-emploi-du-temps-unistra-${VERSION}.zip" .
+          zip -r "../dist/unistra-schedule-${VERSION}.zip" .
 
       - name: Publier le paquet comme artefact
         uses: actions/upload-artifact@v4
