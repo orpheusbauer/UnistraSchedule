@@ -6,6 +6,9 @@ dist/
 .playwright-cli/
 node_modules/
 
+# Documentation locale
+/PUBLICATION_LOCALE.md
+
 # Fichiers système et éditeurs
 .DS_Store
 Thumbs.db
