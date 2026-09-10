@@ -58,7 +58,7 @@ Importez :
 Dans **Privacy practices** :
 
 - utilisez le texte « Objectif unique » fourni dans `store-assets/listing-fr.md` ;
-- justifiez la permission `storage` et l’accès au domaine avec les textes fournis ;
+- justifiez les permissions `storage`, `scripting` et l’accès au domaine avec les textes fournis ;
 - indiquez **Non** pour l’utilisation de code distant ;
 - déclarez honnêtement le traitement local du contenu du site et des contenus saisis par l’utilisateur ;
 - certifiez que les données ne sont ni vendues, ni utilisées hors de l’objectif unique, ni utilisées pour du crédit ;

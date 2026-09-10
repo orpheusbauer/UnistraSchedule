@@ -6,6 +6,13 @@ Ce fichier suit les principes de [Keep a Changelog](https://keepachangelog.com/f
 
 _Aucun changement documenté._
 
+## [1.0.2] - 2026-09-10
+
+### Corrigé
+
+- le panneau est désormais chargé après le retour de l’authentification, même lorsque le calendrier est ouvert par une navigation interne sans rechargement de page ;
+- un clic sur l’icône injecte et ouvre le panneau si l’onglet était déjà ouvert lors de l’installation ou de la mise à jour de l’extension.
+
 ## [1.0.1] - 2026-09-09
 
 ### Modifié

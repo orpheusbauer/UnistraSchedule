@@ -43,9 +43,13 @@ Permettre aux utilisateurs du calendrier `monemploidutemps.unistra.fr` de masque
 
 La permission `storage` conserve localement les mots-clés et les cours personnels créés par l’utilisateur afin de les restaurer lors des prochaines visites. Ces données ne quittent pas le navigateur.
 
+## Justification de `scripting`
+
+La permission `scripting` permet d’ouvrir le panneau lorsque l’utilisateur clique sur l’icône de l’extension alors que la page du calendrier était déjà ouverte au moment de l’installation ou de la mise à jour. Elle injecte uniquement les fichiers inclus dans l’extension, sur `monemploidutemps.unistra.fr`.
+
 ## Justification de l’accès au site
 
-L’accès à `https://monemploidutemps.unistra.fr/*` est nécessaire pour lire les intitulés affichés, masquer les cours correspondant aux mots-clés et insérer les événements personnels dans la grille. L’extension ne s’exécute sur aucun autre domaine.
+L’accès à `https://monemploidutemps.unistra.fr/*` est nécessaire dès l’arrivée sur le site, car l’application rejoint le calendrier par une navigation interne après l’authentification. Il permet ensuite de lire les intitulés affichés, masquer les cours correspondant aux mots-clés et insérer les événements personnels dans la grille. L’extension ne s’exécute sur aucun autre domaine.
 
 ## Code distant
 

@@ -383,10 +383,6 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && root.querySelector("#uext-panel").classList.contains("uext-open")) closePanel();
     });
-
-    globalThis.chrome?.runtime?.onMessage?.addListener((message) => {
-      if (message?.type === "UEXT_TOGGLE_PANEL") togglePanel();
-    });
   }
 
   function togglePanel() {
@@ -630,5 +626,31 @@
     observeCalendar();
   }
 
-  init();
+  let initialization = null;
+
+  function ensureInitialized() {
+    if (!initialization) {
+      initialization = init().catch((error) => {
+        initialization = null;
+        throw error;
+      });
+    }
+    return initialization;
+  }
+
+  globalThis.chrome?.runtime?.onMessage?.addListener((message, _sender, sendResponse) => {
+    if (message?.type !== "UEXT_TOGGLE_PANEL") return false;
+    void ensureInitialized()
+      .then(() => {
+        togglePanel();
+        sendResponse({ ok: true });
+      })
+      .catch((error) => {
+        console.error("Unistra Schedule n'a pas pu initialiser le panneau.", error);
+        sendResponse({ ok: false, message: String(error?.message || error) });
+      });
+    return true;
+  });
+
+  void ensureInitialized();
 })();
