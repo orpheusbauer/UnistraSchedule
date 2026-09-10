@@ -1,8 +1,11 @@
-const UNISTRA_ORIGIN = "https://monemploidutemps.unistra.fr";
+const UNISTRA_ORIGINS = new Set([
+  "https://monemploidutemps.unistra.fr",
+  "https://monedt.unistra.fr"
+]);
 
 function isUnistraSchedulePage(url) {
   try {
-    return new URL(url).origin === UNISTRA_ORIGIN;
+    return UNISTRA_ORIGINS.has(new URL(url).origin);
   } catch (_error) {
     return false;
   }

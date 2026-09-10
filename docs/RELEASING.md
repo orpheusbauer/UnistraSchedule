@@ -2,11 +2,11 @@
 
 Le dépôt utilise la gestion sémantique de version. Toute modification destinée aux utilisateurs doit être associée à une version encore jamais publiée.
 
-- `patch` (`1.0.1` → `1.0.2`) : correction ou petit ajustement compatible ;
-- `minor` (`1.0.1` → `1.1.0`) : nouvelle fonctionnalité compatible ;
-- `major` (`1.0.1` → `2.0.0`) : changement incompatible.
+- `patch` (`X.Y.Z` → `X.Y.(Z+1)`) : correction ou petit ajustement compatible ;
+- `minor` (`X.Y.Z` → `X.(Y+1).0`) : nouvelle fonctionnalité compatible ;
+- `major` (`X.Y.Z` → `(X+1).0.0`) : changement incompatible.
 
-Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.1` utilise le tag `v1.0.1`.
+Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.3` utilise le tag `v1.0.3`.
 
 ## Préparer la version
 

@@ -12,13 +12,13 @@ body:
   - type: input
     attributes:
       label: Navigateur et version
-      placeholder: Chrome 140, Edge 140…
+      placeholder: Chrome 140, Brave 140, Edge 140…
     validations:
       required: true
   - type: input
     attributes:
       label: Version de l’extension
-      placeholder: 1.0.2
+      placeholder: 1.0.3
     validations:
       required: true
   - type: textarea

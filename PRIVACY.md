@@ -1,10 +1,10 @@
 # Politique de confidentialité
 
-Dernière mise à jour : 9 septembre 2026
+Dernière mise à jour : 10 septembre 2026
 
 ## Objet
 
-Unistra Schedule personnalise, dans le navigateur, le calendrier disponible sur `https://monemploidutemps.unistra.fr/consult/calendar`.
+Unistra Schedule personnalise, dans le navigateur, le même calendrier universitaire accessible depuis `https://monemploidutemps.unistra.fr/consult/calendar` et `https://monedt.unistra.fr/consult/calendar`.
 
 ## Données traitées
 
@@ -16,7 +16,7 @@ Pour fournir cette fonctionnalité, l’extension traite localement :
 
 ## Utilisation et stockage
 
-Les mots-clés et les cours personnels sont enregistrés dans `chrome.storage.local` sur l’appareil de l’utilisateur. Le texte du calendrier Unistra est lu uniquement dans la page ouverte et n’est pas recopié dans le stockage de l’extension.
+Les mots-clés et les cours personnels sont enregistrés dans `chrome.storage.local` sur l’appareil de l’utilisateur. Ce stockage appartient à l’extension et permet donc de retrouver les mêmes réglages sur les deux adresses prises en charge. Le texte du calendrier Unistra est lu uniquement dans la page ouverte et n’est pas recopié dans le stockage de l’extension.
 
 L’extension n’utilise ces informations que pour masquer des cours et afficher les événements personnels demandés par l’utilisateur.
 

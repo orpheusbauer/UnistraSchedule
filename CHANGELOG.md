@@ -6,6 +6,17 @@ Ce fichier suit les principes de [Keep a Changelog](https://keepachangelog.com/f
 
 _Aucun changement documenté._
 
+## [1.0.3] - 2026-09-10
+
+### Ajouté
+
+- prise en charge de `https://monedt.unistra.fr` en complément de `https://monemploidutemps.unistra.fr` ;
+- partage automatique des filtres et des cours personnels entre les deux adresses du calendrier.
+
+### Modifié
+
+- l’autorisation d’accès aux sites inclut désormais le second sous-domaine Unistra ; le navigateur peut demander aux utilisateurs existants de confirmer cette nouvelle autorisation lors de la mise à jour.
+
 ## [1.0.2] - 2026-09-10
 
 ### Corrigé

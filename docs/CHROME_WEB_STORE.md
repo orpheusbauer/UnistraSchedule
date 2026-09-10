@@ -17,7 +17,12 @@ https://github.com/orpheusbauer/UnistraSchedule/blob/main/PRIVACY.md
 
 ## 2. Tester et créer le paquet
 
-Chargez d’abord le dossier `extension` comme extension non empaquetée et réalisez un dernier test sur le vrai calendrier.
+Chargez d’abord le dossier `extension` comme extension non empaquetée et réalisez un dernier test sur les deux adresses du calendrier :
+
+- <https://monemploidutemps.unistra.fr/consult/calendar> ;
+- <https://monedt.unistra.fr/consult/calendar>.
+
+Créez un filtre sur une adresse, puis vérifiez qu’il est également présent sur l’autre.
 
 Puis lancez :
 
@@ -58,7 +63,7 @@ Importez :
 Dans **Privacy practices** :
 
 - utilisez le texte « Objectif unique » fourni dans `store-assets/listing-fr.md` ;
-- justifiez les permissions `storage`, `scripting` et l’accès au domaine avec les textes fournis ;
+- justifiez les permissions `storage`, `scripting` et l’accès aux deux domaines avec les textes fournis ;
 - indiquez **Non** pour l’utilisation de code distant ;
 - déclarez honnêtement le traitement local du contenu du site et des contenus saisis par l’utilisateur ;
 - certifiez que les données ne sont ni vendues, ni utilisées hors de l’objectif unique, ni utilisées pour du crédit ;
@@ -76,3 +81,7 @@ Relisez la fiche, vérifiez l’adresse de contact du compte développeur et l�
 2. Récupérez le ZIP attaché à la GitHub Release, ou recréez-le avec `scripts/package.ps1`.
 3. Dans l’onglet **Package**, utilisez **Upload new package**.
 4. Envoyez la nouvelle version en révision.
+
+### Point d’attention pour la version 1.0.3
+
+Cette version ajoute `https://monedt.unistra.fr/*` aux accès hôtes. Vérifiez que la justification d’accès mentionne bien les deux sous-domaines avant l’envoi en révision. Comme il s’agit d’une nouvelle autorisation de site, Chrome peut demander aux utilisateurs déjà équipés de confirmer l’accès lors de la mise à jour.

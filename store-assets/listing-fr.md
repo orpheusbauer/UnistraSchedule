@@ -21,7 +21,12 @@ L’extension permet de :
 
 Les réglages sont enregistrés uniquement dans le navigateur. L’extension ne contient ni publicité, ni suivi d’audience, ni compte utilisateur, et n’envoie aucune donnée à un service externe.
 
-Elle fonctionne uniquement sur la page du calendrier `monemploidutemps.unistra.fr/consult/calendar`.
+Elle fonctionne sur les deux adresses officielles du même calendrier :
+
+- `monemploidutemps.unistra.fr/consult/calendar` ;
+- `monedt.unistra.fr/consult/calendar`.
+
+Les filtres et les cours personnels sont automatiquement partagés entre ces deux adresses.
 
 Ce projet est indépendant et n’est ni édité, ni approuvé, ni maintenu par l’Université de Strasbourg.
 
@@ -37,19 +42,19 @@ https://github.com/orpheusbauer/UnistraSchedule/issues
 
 ## Objectif unique
 
-Permettre aux utilisateurs du calendrier `monemploidutemps.unistra.fr` de masquer des cours et d’y afficher leurs propres événements.
+Permettre aux utilisateurs du calendrier Unistra, accessible depuis `monemploidutemps.unistra.fr` et `monedt.unistra.fr`, de masquer des cours et d’y afficher leurs propres événements.
 
 ## Justification de `storage`
 
-La permission `storage` conserve localement les mots-clés et les cours personnels créés par l’utilisateur afin de les restaurer lors des prochaines visites. Ces données ne quittent pas le navigateur.
+La permission `storage` conserve localement les mots-clés et les cours personnels créés par l’utilisateur afin de les restaurer lors des prochaines visites et de les partager entre les deux adresses du calendrier. Ces données ne quittent pas le navigateur.
 
 ## Justification de `scripting`
 
-La permission `scripting` permet d’ouvrir le panneau lorsque l’utilisateur clique sur l’icône de l’extension alors que la page du calendrier était déjà ouverte au moment de l’installation ou de la mise à jour. Elle injecte uniquement les fichiers inclus dans l’extension, sur `monemploidutemps.unistra.fr`.
+La permission `scripting` permet d’ouvrir le panneau lorsque l’utilisateur clique sur l’icône de l’extension alors que la page du calendrier était déjà ouverte au moment de l’installation ou de la mise à jour. Elle injecte uniquement les fichiers inclus dans l’extension, sur `monemploidutemps.unistra.fr` et `monedt.unistra.fr`.
 
 ## Justification de l’accès au site
 
-L’accès à `https://monemploidutemps.unistra.fr/*` est nécessaire dès l’arrivée sur le site, car l’application rejoint le calendrier par une navigation interne après l’authentification. Il permet ensuite de lire les intitulés affichés, masquer les cours correspondant aux mots-clés et insérer les événements personnels dans la grille. L’extension ne s’exécute sur aucun autre domaine.
+L’accès à `https://monemploidutemps.unistra.fr/*` et `https://monedt.unistra.fr/*` est nécessaire dès l’arrivée sur l’une des deux adresses, car l’application rejoint le calendrier par une navigation interne après l’authentification. Il permet ensuite de lire les intitulés affichés, masquer les cours correspondant aux mots-clés et insérer les événements personnels dans la grille. L’extension ne s’exécute sur aucun autre domaine.
 
 ## Code distant
 
@@ -61,6 +66,7 @@ Non. Tous les fichiers exécutés sont inclus dans le paquet de l’extension. A
 2. Cliquer sur **Mon EDT** en bas à droite.
 3. Ajouter un mot présent dans un cours et vérifier que le cours disparaît.
 4. Ajouter un cours personnel sur une date visible et vérifier son apparition dans la grille.
-5. Recharger la page et vérifier que les réglages sont conservés.
+5. Ouvrir `https://monedt.unistra.fr/consult/calendar` et vérifier que le mot-clé et le cours personnel sont également présents.
+6. Recharger la page et vérifier que les réglages sont conservés.
 
 L’accès au calendrier dépend de l’authentification de l’Université de Strasbourg. Si l’équipe de validation demande un accès, fournissez uniquement un compte de test dédié dont l’utilisation a été autorisée par l’établissement, dans le champ privé **Test instructions** du Developer Dashboard. Ne partagez jamais vos identifiants personnels et ne publiez aucun identifiant dans GitHub.

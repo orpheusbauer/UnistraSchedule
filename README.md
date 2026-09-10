@@ -12,18 +12,18 @@ Une extension Chrome indépendante pour adapter le calendrier en ligne de l’Un
 - modifier ou supprimer un cours en cliquant dessus dans le calendrier ;
 - conserver les réglages localement dans le navigateur.
 
-L’extension fonctionne uniquement sur `monemploidutemps.unistra.fr`. Elle ne contient ni suivi d’audience, ni publicité, ni appel vers un service externe.
+L’extension fonctionne uniquement sur `monemploidutemps.unistra.fr` et `monedt.unistra.fr`. Les filtres et les cours personnels sont partagés entre ces deux adresses. Elle ne contient ni suivi d’audience, ni publicité, ni appel vers un service externe.
 
 > Ce projet est indépendant et n’est ni édité, ni approuvé, ni maintenu par l’Université de Strasbourg.
 
 ## Installation locale
 
 1. Télécharger ou cloner ce dépôt.
-2. Ouvrir `chrome://extensions` dans Chrome ou `edge://extensions` dans Edge.
+2. Ouvrir `chrome://extensions` dans Chrome, `brave://extensions` dans Brave ou `edge://extensions` dans Edge.
 3. Activer le **Mode développeur**.
 4. Cliquer sur **Charger l’extension non empaquetée**.
 5. Sélectionner le dossier `extension` du dépôt.
-6. Ouvrir ou recharger <https://monemploidutemps.unistra.fr/consult/calendar>.
+6. Ouvrir ou recharger <https://monemploidutemps.unistra.fr/consult/calendar> ou <https://monedt.unistra.fr/consult/calendar>.
 
 Le bouton **Mon EDT** apparaît en bas à droite du calendrier. L’icône dans la barre d’outils ouvre le même panneau.
 

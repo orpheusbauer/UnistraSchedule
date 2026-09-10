@@ -4,6 +4,7 @@
   if (window.__unistraPersonalScheduleLoaded) return;
   window.__unistraPersonalScheduleLoaded = true;
 
+  // Le stockage Chrome appartient à l’extension : cette clé est commune aux deux domaines pris en charge.
   const STORAGE_KEY = "unistraPersonalSchedule";
   const MONTHS = [
     "janvier", "février", "mars", "avril", "mai", "juin",

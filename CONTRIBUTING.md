@@ -16,9 +16,10 @@ Merci de vouloir améliorer le projet.
 
 1. Créez une branche courte et descriptive.
 2. Modifiez les fichiers du dossier `extension`.
-3. Rechargez l’extension depuis `chrome://extensions`.
-4. Testez le masquage, l’ajout, l’édition, la suppression, la répétition et un changement de semaine.
-5. Lancez les contrôles :
+3. Rechargez l’extension depuis `chrome://extensions`, `brave://extensions` ou `edge://extensions`.
+4. Testez le masquage, l’ajout, l’édition, la suppression, la répétition et un changement de semaine sur les deux domaines pris en charge.
+5. Vérifiez qu’un filtre ou un cours créé sur un domaine est disponible sur l’autre.
+6. Lancez les contrôles :
 
 ```powershell
 node --check extension/content.js
@@ -26,7 +27,7 @@ node --check extension/background.js
 node scripts/validate-manifest.mjs
 ```
 
-6. Mettez à jour `CHANGELOG.md` si le changement est visible par les utilisateurs.
+7. Mettez à jour `CHANGELOG.md` si le changement est visible par les utilisateurs.
 
 ## Gestion des versions
 

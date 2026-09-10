@@ -9,6 +9,10 @@ const manifestPath = resolve(extensionRoot, "manifest.json");
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
 const changelog = await readFile(resolve(repositoryRoot, "CHANGELOG.md"), "utf8");
 const errors = [];
+const supportedMatches = [
+  "https://monemploidutemps.unistra.fr/*",
+  "https://monedt.unistra.fr/*"
+];
 
 function check(condition, message) {
   if (!condition) errors.push(message);
@@ -20,9 +24,9 @@ check(typeof manifest.description === "string" && manifest.description.length <=
 check(/^\d+\.\d+\.\d+$/.test(manifest.version || ""), "version doit respecter le format X.Y.Z");
 check(changelog.includes(`## [${manifest.version}] - `), `CHANGELOG.md doit contenir une section datée pour la version ${manifest.version}`);
 check(JSON.stringify(manifest.permissions) === JSON.stringify(["storage", "scripting"]), "seules les permissions storage et scripting sont attendues");
-check(manifest.host_permissions?.length === 1 && manifest.host_permissions[0] === "https://monemploidutemps.unistra.fr/*", "l’accès hôte doit être limité à monemploidutemps.unistra.fr");
+check(JSON.stringify(manifest.host_permissions) === JSON.stringify(supportedMatches), "les accès hôtes doivent être limités aux deux domaines d’emploi du temps Unistra");
 check(manifest.content_scripts?.length === 1, "un seul content script est attendu");
-check(manifest.content_scripts?.[0]?.matches?.length === 1 && manifest.content_scripts[0].matches[0] === "https://monemploidutemps.unistra.fr/*", "le content script doit couvrir les navigations internes de monemploidutemps.unistra.fr");
+check(JSON.stringify(manifest.content_scripts?.[0]?.matches) === JSON.stringify(supportedMatches), "le content script doit couvrir les navigations internes des deux domaines Unistra");
 
 const packagedFiles = new Set([
   "background.js",
