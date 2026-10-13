@@ -26,6 +26,7 @@ jobs:
           node --check extension/background.js
           node --check scripts/validate-manifest.mjs
           node --check scripts/check-firefox-report.mjs
+          node --check scripts/validate-archive.mjs
           node --check scripts/prepare-release.mjs
           node --check scripts/check-release.mjs
           node --check scripts/release-notes.mjs
@@ -40,8 +41,9 @@ jobs:
         run: |
           VERSION=$(node -p "require('./extension/manifest.json').version")
           mkdir -p dist
-          cd extension
-          zip -r "../dist/unistra-schedule-${VERSION}.zip" .
+          npx --yes web-ext@10.6.0 build --source-dir extension --artifacts-dir dist --filename "unistra-schedule-${VERSION}.zip" --overwrite-dest
+          node scripts/validate-archive.mjs "dist/unistra-schedule-${VERSION}.zip"
+          npx --yes addons-linter@10.10.0 "dist/unistra-schedule-${VERSION}.zip" --output=json --boring | node scripts/check-firefox-report.mjs
 
       - name: Publier le paquet comme artefact
         uses: actions/upload-artifact@v4

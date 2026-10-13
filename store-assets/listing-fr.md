@@ -66,12 +66,11 @@ Non. Tous les fichiers exécutés sont inclus dans le paquet de l’extension. A
 
 L’extension ne collecte et ne transmet aucune donnée en dehors de l’extension ou du navigateur local. Dans le manifeste Firefox, la permission de collecte requise est donc déclarée avec la valeur `none`.
 
-## Notes de version 1.0.4
+## Notes de version 1.0.5
 
-- ajout de la compatibilité avec Firefox 140 et versions ultérieures ;
-- ajout de l’identifiant requis par Firefox Add-ons ;
-- ajout de la déclaration explicite d’absence de collecte ou de transmission de données ;
-- conservation d’un paquet unique pour Chrome, Brave, Edge et Firefox.
+- correction du format des chemins internes du ZIP pour la validation Firefox Add-ons ;
+- création du paquet avec l’outil officiel `web-ext` ;
+- ajout d’un contrôle automatique de la structure de l’archive et du ZIP final avant publication.
 
 ## Instructions de test pour l’équipe de validation
 

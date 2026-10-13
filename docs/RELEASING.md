@@ -6,7 +6,7 @@ Le dépôt utilise la gestion sémantique de version. Toute modification destin�
 - `minor` (`X.Y.Z` → `X.(Y+1).0`) : nouvelle fonctionnalité compatible ;
 - `major` (`X.Y.Z` → `(X+1).0.0`) : changement incompatible.
 
-Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.4` utilise le tag `v1.0.4`.
+Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.5` utilise le tag `v1.0.5`.
 
 ## Préparer la version
 
@@ -29,6 +29,8 @@ npx.cmd --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring 
   node scripts/check-firefox-report.mjs
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```
+
+Le script de paquetage utilise `web-ext build`, puis contrôle la table centrale du ZIP. Il échoue si un nom contient un antislash Windows ou si le contenu ne correspond pas aux huit fichiers attendus. Enfin, `addons-linter` analyse directement le ZIP qui sera envoyé aux stores.
 
 ## Commiter, vérifier et publier
 

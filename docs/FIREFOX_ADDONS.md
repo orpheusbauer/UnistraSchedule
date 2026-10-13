@@ -1,6 +1,6 @@
 # Publication sur Firefox Add-ons
 
-Ce guide concerne la publication publique sur [Firefox Add-ons (AMO)](https://addons.mozilla.org/developers/). La version `1.0.4` utilise le même dossier `extension` et le même ZIP que Chrome, Brave et Edge. Il n’est pas nécessaire de maintenir une seconde branche.
+Ce guide concerne la publication publique sur [Firefox Add-ons (AMO)](https://addons.mozilla.org/developers/). La version `1.0.5` utilise le même dossier `extension` et le même ZIP que Chrome, Brave et Edge. Il n’est pas nécessaire de maintenir une seconde branche.
 
 ## 1. Identité et compatibilité
 
@@ -46,6 +46,8 @@ powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```
 
 Le fichier `dist/unistra-schedule-X.Y.Z.zip` obtenu est le paquet à envoyer aussi bien au Chrome Web Store qu’à Firefox Add-ons. Le fichier `manifest.json` doit se trouver directement à la racine de l’archive.
+
+Le script utilise `web-ext build` afin que les noms internes emploient toujours `/`, même lorsque le paquet est créé sous Windows. Il relit ensuite la table centrale du ZIP et refuse notamment un nom comme `icons\icon-128.png`, rejeté par le validateur AMO. Enfin, il exécute `addons-linter` directement sur l’archive finale.
 
 ## 4. Créer la fiche publique sur AMO
 

@@ -82,6 +82,6 @@ Relisez la fiche, vérifiez l’adresse de contact du compte développeur et l�
 3. Dans l’onglet **Package**, utilisez **Upload new package**.
 4. Envoyez la nouvelle version en révision.
 
-### Point d’attention pour la version 1.0.4
+### Point d’attention pour la version 1.0.5
 
-Cette version ajoute le repli de script d’arrière-plan requis par Firefox et les métadonnées propres à Mozilla. Elle n’ajoute aucun nouvel accès hôte ni aucune nouvelle permission Chrome. Envoyez le même fichier `unistra-schedule-1.0.4.zip` aux deux stores.
+Cette version corrige uniquement la structure interne du ZIP créé sous Windows. Elle n’ajoute aucun accès hôte ni aucune permission. Envoyez le même fichier `unistra-schedule-1.0.5.zip` aux deux stores.

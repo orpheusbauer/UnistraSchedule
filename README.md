@@ -67,7 +67,7 @@ Sous Windows, le script suivant lance les contrôles locaux et crée le ZIP comm
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```
 
-L’archive est créée dans `dist/`. Son `manifest.json` se trouve directement à la racine du ZIP. Le même fichier peut être envoyé aux deux stores.
+L’archive est créée dans `dist/` avec `web-ext build`. Son `manifest.json` se trouve directement à la racine du ZIP et tous les chemins internes utilisent `/`, y compris sous Windows. Le ZIP final est ensuite contrôlé directement avec le linter de Firefox Add-ons. Le même fichier peut être envoyé aux deux stores.
 
 ## Contribuer
 

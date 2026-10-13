@@ -24,6 +24,7 @@ Merci de vouloir améliorer le projet.
 ```powershell
 node --check extension/content.js
 node --check extension/background.js
+node --check scripts/validate-archive.mjs
 node scripts/validate-manifest.mjs
 npx.cmd --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring |
   node scripts/check-firefox-report.mjs
@@ -47,4 +48,4 @@ Consultez le [guide de publication](docs/RELEASING.md) pour les contrôles, le c
 
 Une pull request doit expliquer le problème, la solution et les vérifications réalisées. Pour un changement d’interface, ajoutez une capture avant/après sans donnée personnelle.
 
-Avant toute publication, exécutez les quatre contrôles ci-dessus et `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`.
+Avant toute publication, exécutez les contrôles ci-dessus et `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`. Le paquetage vérifie également les noms des fichiers enregistrés dans le ZIP.

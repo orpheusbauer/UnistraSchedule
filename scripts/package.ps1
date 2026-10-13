@@ -26,11 +26,17 @@ if ($LASTEXITCODE -ne 0) { throw "Le validateur Firefox web-ext a signalé un pr
 
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
 New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
-$archivePath = Join-Path $outputRoot "unistra-schedule-$($manifest.version).zip"
+$archiveName = "unistra-schedule-$($manifest.version).zip"
+$archivePath = Join-Path $outputRoot $archiveName
 
-if (Test-Path -LiteralPath $archivePath) {
-  Remove-Item -LiteralPath $archivePath -Force
-}
+& $npxCommand.Source --yes web-ext@10.6.0 build --source-dir $extensionRoot --artifacts-dir $outputRoot --filename $archiveName --overwrite-dest
+if ($LASTEXITCODE -ne 0) { throw "La création du paquet avec web-ext a échoué" }
 
-Compress-Archive -Path (Join-Path $extensionRoot "*") -DestinationPath $archivePath -CompressionLevel Optimal
+node (Join-Path $PSScriptRoot "validate-archive.mjs") $archivePath
+if ($LASTEXITCODE -ne 0) { throw "Le contenu de l'archive n'est pas valide" }
+
+& $npxCommand.Source --yes addons-linter@10.10.0 $archivePath --output=json --boring |
+  node (Join-Path $PSScriptRoot "check-firefox-report.mjs")
+if ($LASTEXITCODE -ne 0) { throw "Le paquet final a été refusé par le linter Firefox Add-ons" }
+
 Write-Host "Paquet créé : $archivePath"

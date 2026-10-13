@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unistra Schedule",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Masquez des cours et ajoutez vos événements personnels à l’emploi du temps Unistra.",
   "permissions": [
     "storage",

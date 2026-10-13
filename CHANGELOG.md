@@ -6,6 +6,19 @@ Ce fichier suit les principes de [Keep a Changelog](https://keepachangelog.com/f
 
 _Aucun changement documenté._
 
+## [1.0.5] - 2026-10-13
+
+### Corrigé
+
+- les chemins internes du ZIP utilisent désormais `/` au lieu de `\`, conformément au format accepté par Firefox Add-ons ;
+- le paquet créé sous Windows ne déclenche plus l’erreur Mozilla `Invalid file name in archive` pour les icônes.
+
+### Modifié
+
+- le paquet local et les artefacts GitHub sont désormais construits avec l’outil officiel `web-ext` ;
+- une vérification de la table centrale du ZIP refuse automatiquement les antislashs, les chemins dangereux, les doublons et les fichiers inattendus ;
+- le linter utilisé par Firefox Add-ons contrôle désormais directement le ZIP final dans le paquetage local et dans les workflows GitHub.
+
 ## [1.0.4] - 2026-10-13
 
 ### Ajouté
