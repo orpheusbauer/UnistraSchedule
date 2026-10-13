@@ -13,6 +13,7 @@ const supportedMatches = [
   "https://monemploidutemps.unistra.fr/*",
   "https://monedt.unistra.fr/*"
 ];
+const firefoxId = "unistra-schedule@orpheusbauer.github.io";
 
 function check(condition, message) {
   if (!condition) errors.push(message);
@@ -27,6 +28,15 @@ check(JSON.stringify(manifest.permissions) === JSON.stringify(["storage", "scrip
 check(JSON.stringify(manifest.host_permissions) === JSON.stringify(supportedMatches), "les accès hôtes doivent être limités aux deux domaines d’emploi du temps Unistra");
 check(manifest.content_scripts?.length === 1, "un seul content script est attendu");
 check(JSON.stringify(manifest.content_scripts?.[0]?.matches) === JSON.stringify(supportedMatches), "le content script doit couvrir les navigations internes des deux domaines Unistra");
+check(manifest.background?.service_worker === "background.js", "background.service_worker doit charger background.js dans Chromium");
+check(JSON.stringify(manifest.background?.scripts) === JSON.stringify(["background.js"]), "background.scripts doit fournir le repli Firefox pour background.js");
+check(manifest.browser_specific_settings?.gecko?.id === firefoxId, `l’identifiant Firefox doit rester ${firefoxId}`);
+check(manifest.browser_specific_settings?.gecko?.strict_min_version === "140.0", "la version minimale de Firefox doit être 140.0");
+check(manifest.browser_specific_settings?.gecko_android?.strict_min_version === "142.0", "la version minimale de Firefox pour Android doit être 142.0");
+check(
+  JSON.stringify(manifest.browser_specific_settings?.gecko?.data_collection_permissions) === JSON.stringify({ required: ["none"] }),
+  "Firefox doit déclarer explicitement qu’aucune donnée n’est collectée ou transmise"
+);
 
 const packagedFiles = new Set([
   "background.js",

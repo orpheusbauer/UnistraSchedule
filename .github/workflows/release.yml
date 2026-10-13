@@ -27,6 +27,8 @@ jobs:
         run: |
           node --check extension/content.js
           node --check extension/background.js
+          node --check scripts/validate-manifest.mjs
+          node --check scripts/check-firefox-report.mjs
           node --check scripts/prepare-release.mjs
           node --check scripts/check-release.mjs
           node --check scripts/release-notes.mjs
@@ -36,7 +38,10 @@ jobs:
           node scripts/validate-manifest.mjs
           node scripts/check-release.mjs "$GITHUB_REF_NAME"
 
-      - name: Créer le paquet Chrome Web Store
+      - name: Valider pour Firefox Add-ons
+        run: npx --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring | node scripts/check-firefox-report.mjs
+
+      - name: Créer le paquet multi-navigateurs
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           mkdir -p dist
@@ -52,7 +57,7 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           gh release create "$GITHUB_REF_NAME" \
-            "dist/unistra-schedule-${VERSION}.zip#Paquet Chrome Web Store" \
+            "dist/unistra-schedule-${VERSION}.zip#Paquet Chrome Web Store et Firefox Add-ons" \
             --verify-tag \
             --fail-on-no-commits \
             --title "Unistra Schedule ${GITHUB_REF_NAME}" \

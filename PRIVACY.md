@@ -1,6 +1,6 @@
 # Politique de confidentialité
 
-Dernière mise à jour : 10 septembre 2026
+Dernière mise à jour : 13 octobre 2026
 
 ## Objet
 
@@ -16,17 +16,17 @@ Pour fournir cette fonctionnalité, l’extension traite localement :
 
 ## Utilisation et stockage
 
-Les mots-clés et les cours personnels sont enregistrés dans `chrome.storage.local` sur l’appareil de l’utilisateur. Ce stockage appartient à l’extension et permet donc de retrouver les mêmes réglages sur les deux adresses prises en charge. Le texte du calendrier Unistra est lu uniquement dans la page ouverte et n’est pas recopié dans le stockage de l’extension.
+Les mots-clés et les cours personnels sont enregistrés dans le stockage local de l’extension (`storage.local`) sur l’appareil de l’utilisateur. Ce stockage appartient à l’extension et permet donc de retrouver les mêmes réglages sur les deux adresses prises en charge. Le texte du calendrier Unistra est lu uniquement dans la page ouverte et n’est pas recopié dans le stockage de l’extension.
 
 L’extension n’utilise ces informations que pour masquer des cours et afficher les événements personnels demandés par l’utilisateur.
 
 ## Transmission et partage
 
-Aucune donnée n’est envoyée au développeur, à un service d’analyse, à un annonceur ou à un autre tiers. L’extension n’exécute aucun code distant et ne contient ni publicité ni outil de suivi.
+Aucune donnée n’est envoyée au développeur, à un service d’analyse, à un annonceur ou à un autre tiers. Aucune donnée n’est traitée en dehors de l’extension ou du navigateur local. L’extension n’exécute aucun code distant et ne contient ni publicité ni outil de suivi.
 
 ## Conservation et suppression
 
-Les réglages restent sur l’appareil tant que l’utilisateur ne les supprime pas dans l’interface ou ne désinstalle pas l’extension. La suppression des données de l’extension depuis Chrome efface également ces réglages.
+Les réglages restent sur l’appareil tant que l’utilisateur ne les supprime pas dans l’interface ou ne désinstalle pas l’extension. La suppression des données de l’extension depuis les paramètres de Chrome, Brave, Edge ou Firefox efface également ces réglages.
 
 ## Accès et contrôle
 
@@ -35,6 +35,10 @@ L’utilisateur peut voir, modifier et supprimer ses mots-clés et cours personn
 ## Utilisation limitée
 
 L’utilisation des informations traitées par l’extension est limitée à sa fonctionnalité unique et respecte les exigences d’utilisation limitée de la politique relative aux données utilisateur du Chrome Web Store. Aucune information n’est utilisée à des fins publicitaires, transférée ou consultée par une personne.
+
+## Déclaration aux stores
+
+Le manifeste destiné à Firefox Add-ons déclare `data_collection_permissions.required` avec la valeur `none`, car aucune donnée n’est collectée ou transmise en dehors de l’extension ou du navigateur local. Le traitement local décrit ci-dessus reste également déclaré dans le formulaire de confidentialité du Chrome Web Store.
 
 ## Contact
 

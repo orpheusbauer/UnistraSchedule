@@ -16,15 +16,17 @@ Merci de vouloir améliorer le projet.
 
 1. Créez une branche courte et descriptive.
 2. Modifiez les fichiers du dossier `extension`.
-3. Rechargez l’extension depuis `chrome://extensions`, `brave://extensions` ou `edge://extensions`.
-4. Testez le masquage, l’ajout, l’édition, la suppression, la répétition et un changement de semaine sur les deux domaines pris en charge.
-5. Vérifiez qu’un filtre ou un cours créé sur un domaine est disponible sur l’autre.
+3. Rechargez l’extension depuis `chrome://extensions`, `brave://extensions` ou `edge://extensions`. Dans Firefox, chargez temporairement `extension/manifest.json` depuis `about:debugging#/runtime/this-firefox`.
+4. Testez dans au moins un navigateur Chromium et dans Firefox le masquage, l’ajout, l’édition, la suppression, la répétition, le clic sur l’icône et un changement de semaine.
+5. Réalisez les essais sur les deux domaines pris en charge et vérifiez qu’un filtre ou un cours créé sur un domaine est disponible sur l’autre.
 6. Lancez les contrôles :
 
 ```powershell
 node --check extension/content.js
 node --check extension/background.js
 node scripts/validate-manifest.mjs
+npx.cmd --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring |
+  node scripts/check-firefox-report.mjs
 ```
 
 7. Mettez à jour `CHANGELOG.md` si le changement est visible par les utilisateurs.
@@ -45,4 +47,4 @@ Consultez le [guide de publication](docs/RELEASING.md) pour les contrôles, le c
 
 Une pull request doit expliquer le problème, la solution et les vérifications réalisées. Pour un changement d’interface, ajoutez une capture avant/après sans donnée personnelle.
 
-Avant toute publication, exécutez `node scripts/validate-manifest.mjs` et `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`.
+Avant toute publication, exécutez les quatre contrôles ci-dessus et `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`.

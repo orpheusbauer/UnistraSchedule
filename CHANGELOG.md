@@ -6,6 +6,21 @@ Ce fichier suit les principes de [Keep a Changelog](https://keepachangelog.com/f
 
 _Aucun changement documenté._
 
+## [1.0.4] - 2026-10-13
+
+### Ajouté
+
+- prise en charge officielle de Firefox 140 et versions ultérieures avec le même paquet que Chrome, Brave et Edge ;
+- identifiant stable requis pour la publication sur Firefox Add-ons ;
+- déclaration Mozilla indiquant explicitement qu’aucune donnée n’est collectée ou transmise ;
+- validation automatique du paquet avec l’outil officiel `web-ext`, y compris le contrôle des avertissements inattendus.
+
+### Modifié
+
+- le script d’arrière-plan possède désormais les deux déclarations Manifest V3 attendues : un service worker pour Chromium et un script d’événement pour Firefox ;
+- les appels de stockage, de messagerie et d’injection utilisent automatiquement l’API asynchrone fournie par le navigateur ;
+- les guides d’installation, de contribution et de publication couvrent désormais Chrome Web Store et Firefox Add-ons.
+
 ## [1.0.3] - 2026-09-10
 
 ### Ajouté

@@ -4,37 +4,35 @@
   if (window.__unistraPersonalScheduleLoaded) return;
   window.__unistraPersonalScheduleLoaded = true;
 
-  // Le stockage Chrome appartient à l’extension : cette clé est commune aux deux domaines pris en charge.
+  // Le stockage du navigateur appartient à l’extension : cette clé est commune aux deux domaines pris en charge.
   const STORAGE_KEY = "unistraPersonalSchedule";
   const MONTHS = [
     "janvier", "février", "mars", "avril", "mai", "juin",
     "juillet", "août", "septembre", "octobre", "novembre", "décembre"
   ];
   const DEFAULT_DATA = { hiddenKeywords: [], customEvents: [] };
+  const extensionApi = globalThis.browser ?? globalThis.chrome;
 
   let data = structuredCloneSafe(DEFAULT_DATA);
   let editingId = null;
   let observerTimer = null;
 
   const storage = {
-    get() {
-      if (globalThis.chrome?.storage?.local) {
-        return new Promise((resolve) => {
-          chrome.storage.local.get({ [STORAGE_KEY]: DEFAULT_DATA }, (result) => {
-            resolve(result?.[STORAGE_KEY] || DEFAULT_DATA);
-          });
-        });
+    async get() {
+      if (extensionApi?.storage?.local) {
+        const result = await extensionApi.storage.local.get({ [STORAGE_KEY]: DEFAULT_DATA });
+        return result?.[STORAGE_KEY] || DEFAULT_DATA;
       }
 
       try {
-        return Promise.resolve(JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_DATA);
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_DATA;
       } catch (_error) {
-        return Promise.resolve(DEFAULT_DATA);
+        return DEFAULT_DATA;
       }
     },
     set(value) {
-      if (globalThis.chrome?.storage?.local) {
-        return new Promise((resolve) => chrome.storage.local.set({ [STORAGE_KEY]: value }, resolve));
+      if (extensionApi?.storage?.local) {
+        return extensionApi.storage.local.set({ [STORAGE_KEY]: value });
       }
 
       localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
@@ -639,7 +637,7 @@
     return initialization;
   }
 
-  globalThis.chrome?.runtime?.onMessage?.addListener((message, _sender, sendResponse) => {
+  extensionApi?.runtime?.onMessage?.addListener((message, _sender, sendResponse) => {
     if (message?.type !== "UEXT_TOGGLE_PANEL") return false;
     void ensureInitialized()
       .then(() => {

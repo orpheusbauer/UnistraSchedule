@@ -24,6 +24,8 @@ jobs:
         run: |
           node --check extension/content.js
           node --check extension/background.js
+          node --check scripts/validate-manifest.mjs
+          node --check scripts/check-firefox-report.mjs
           node --check scripts/prepare-release.mjs
           node --check scripts/check-release.mjs
           node --check scripts/release-notes.mjs
@@ -31,7 +33,10 @@ jobs:
       - name: Vérifier le manifeste
         run: node scripts/validate-manifest.mjs
 
-      - name: Créer le paquet Chrome Web Store
+      - name: Valider pour Firefox Add-ons
+        run: npx --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring | node scripts/check-firefox-report.mjs
+
+      - name: Créer le paquet multi-navigateurs
         run: |
           VERSION=$(node -p "require('./extension/manifest.json').version")
           mkdir -p dist
@@ -41,5 +46,5 @@ jobs:
       - name: Publier le paquet comme artefact
         uses: actions/upload-artifact@v4
         with:
-          name: extension-chrome-web-store
+          name: unistra-schedule-package
           path: dist/*.zip

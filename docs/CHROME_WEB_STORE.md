@@ -1,6 +1,6 @@
 # Publication sur le Chrome Web Store
 
-Ce guide accompagne la version indiquée dans `extension/manifest.json`.
+Ce guide accompagne la version indiquée dans `extension/manifest.json`. Depuis la version `1.0.4`, le ZIP produit est commun au Chrome Web Store et à Firefox Add-ons.
 
 ## 1. Préparer GitHub
 
@@ -30,7 +30,7 @@ Puis lancez :
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```
 
-Téléversez le ZIP créé dans `dist/`. Ne compressez pas le dépôt entier : `manifest.json` doit être directement à la racine du ZIP.
+Téléversez le ZIP créé dans `dist/`. Ne compressez pas le dépôt entier : `manifest.json` doit être directement à la racine du ZIP. Les propriétés Firefox du manifeste sont ignorées par Chrome et ne nécessitent pas de paquet séparé.
 
 ## 3. Créer l’élément
 
@@ -82,6 +82,6 @@ Relisez la fiche, vérifiez l’adresse de contact du compte développeur et l�
 3. Dans l’onglet **Package**, utilisez **Upload new package**.
 4. Envoyez la nouvelle version en révision.
 
-### Point d’attention pour la version 1.0.3
+### Point d’attention pour la version 1.0.4
 
-Cette version ajoute `https://monedt.unistra.fr/*` aux accès hôtes. Vérifiez que la justification d’accès mentionne bien les deux sous-domaines avant l’envoi en révision. Comme il s’agit d’une nouvelle autorisation de site, Chrome peut demander aux utilisateurs déjà équipés de confirmer l’accès lors de la mise à jour.
+Cette version ajoute le repli de script d’arrière-plan requis par Firefox et les métadonnées propres à Mozilla. Elle n’ajoute aucun nouvel accès hôte ni aucune nouvelle permission Chrome. Envoyez le même fichier `unistra-schedule-1.0.4.zip` aux deux stores.

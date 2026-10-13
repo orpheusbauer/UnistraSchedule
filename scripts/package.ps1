@@ -17,6 +17,13 @@ if ($LASTEXITCODE -ne 0) { throw "background.js contient une erreur de syntaxe" 
 node (Join-Path $PSScriptRoot "validate-manifest.mjs")
 if ($LASTEXITCODE -ne 0) { throw "Le manifeste n'est pas valide" }
 
+$npxCommand = Get-Command npx.cmd -ErrorAction SilentlyContinue
+if (-not $npxCommand) { throw "npx.cmd est requis pour lancer le validateur Firefox web-ext" }
+
+& $npxCommand.Source --yes web-ext@10.6.0 lint --source-dir $extensionRoot --output=json --boring |
+  node (Join-Path $PSScriptRoot "check-firefox-report.mjs")
+if ($LASTEXITCODE -ne 0) { throw "Le validateur Firefox web-ext a signalé un problème" }
+
 $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
 New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
 $archivePath = Join-Path $outputRoot "unistra-schedule-$($manifest.version).zip"

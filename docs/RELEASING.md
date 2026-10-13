@@ -6,7 +6,7 @@ Le dépôt utilise la gestion sémantique de version. Toute modification destin�
 - `minor` (`X.Y.Z` → `X.(Y+1).0`) : nouvelle fonctionnalité compatible ;
 - `major` (`X.Y.Z` → `(X+1).0.0`) : changement incompatible.
 
-Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.3` utilise le tag `v1.0.3`.
+Le numéro n’a pas de préfixe dans `extension/manifest.json`. Le tag Git correspondant commence par `v` : la version `1.0.4` utilise le tag `v1.0.4`.
 
 ## Préparer la version
 
@@ -25,6 +25,8 @@ Le script augmente la version du manifeste, date la nouvelle section du changelo
 
 ```powershell
 node scripts/validate-manifest.mjs
+npx.cmd --yes web-ext@10.6.0 lint --source-dir extension --output=json --boring |
+  node scripts/check-firefox-report.mjs
 powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 ```
 
@@ -48,10 +50,13 @@ gh release view vX.Y.Z --web
 
 Si GitHub n’a pas encore affiché le nouveau workflow au moment de la commande `gh run list`, attendez quelques secondes puis relancez uniquement la ligne `gh run watch (...)` concernée.
 
-Le workflow `Validation` contrôle le code et fabrique un artefact de test à chaque push. Le workflow `Release` se déclenche au push du tag, vérifie que le tag, le manifeste et le changelog concordent, puis publie automatiquement une GitHub Release avec le ZIP destiné au Chrome Web Store.
+Le workflow `Validation` contrôle le code, exécute le validateur Mozilla `web-ext` et fabrique un artefact de test à chaque push. Le workflow `Release` se déclenche au push du tag, vérifie que le tag, le manifeste et le changelog concordent, relance `web-ext`, puis publie automatiquement une GitHub Release avec le ZIP commun aux deux stores.
 
-## Mettre à jour le Chrome Web Store
+## Mettre à jour les stores
 
-Téléchargez `unistra-schedule-X.Y.Z.zip` depuis la GitHub Release, puis suivez la section « Publier une mise à jour » du [guide Chrome Web Store](CHROME_WEB_STORE.md).
+Téléchargez `unistra-schedule-X.Y.Z.zip` depuis la GitHub Release, puis utilisez ce même fichier :
+
+- dans la section « Publier une mise à jour » du [guide Chrome Web Store](CHROME_WEB_STORE.md) ;
+- dans la section « Publier une mise à jour » du [guide Firefox Add-ons](FIREFOX_ADDONS.md).
 
 Un tag publié est immuable : en cas d’erreur, préparez une nouvelle version au lieu de déplacer ou de réutiliser le tag.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unistra Schedule",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Masquez des cours et ajoutez vos événements personnels à l’emploi du temps Unistra.",
   "permissions": [
     "storage",
@@ -11,6 +11,20 @@
     "https://monemploidutemps.unistra.fr/*",
     "https://monedt.unistra.fr/*"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "unistra-schedule@orpheusbauer.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -25,6 +39,9 @@
     }
   },
   "background": {
+    "scripts": [
+      "background.js"
+    ],
     "service_worker": "background.js"
   },
   "content_scripts": [

@@ -28,6 +28,8 @@ Elle fonctionne sur les deux adresses officielles du même calendrier :
 
 Les filtres et les cours personnels sont automatiquement partagés entre ces deux adresses.
 
+L’extension est compatible avec Chrome, Brave, Edge et Firefox.
+
 Ce projet est indépendant et n’est ni édité, ni approuvé, ni maintenu par l’Université de Strasbourg.
 
 Le code source est public. Les problèmes et propositions d’amélioration peuvent être suivis sur GitHub : `https://github.com/orpheusbauer/UnistraSchedule`.
@@ -60,9 +62,20 @@ L’accès à `https://monemploidutemps.unistra.fr/*` et `https://monedt.unistra
 
 Non. Tous les fichiers exécutés sont inclus dans le paquet de l’extension. Aucun script externe n’est téléchargé ou exécuté.
 
+## Déclaration Firefox sur la collecte des données
+
+L’extension ne collecte et ne transmet aucune donnée en dehors de l’extension ou du navigateur local. Dans le manifeste Firefox, la permission de collecte requise est donc déclarée avec la valeur `none`.
+
+## Notes de version 1.0.4
+
+- ajout de la compatibilité avec Firefox 140 et versions ultérieures ;
+- ajout de l’identifiant requis par Firefox Add-ons ;
+- ajout de la déclaration explicite d’absence de collecte ou de transmission de données ;
+- conservation d’un paquet unique pour Chrome, Brave, Edge et Firefox.
+
 ## Instructions de test pour l’équipe de validation
 
-1. Ouvrir `https://monemploidutemps.unistra.fr/consult/calendar` avec un compte autorisé à consulter un calendrier.
+1. Ouvrir `https://monemploidutemps.unistra.fr/consult/calendar` dans le navigateur testé avec un compte autorisé à consulter un calendrier.
 2. Cliquer sur **Mon EDT** en bas à droite.
 3. Ajouter un mot présent dans un cours et vérifier que le cours disparaît.
 4. Ajouter un cours personnel sur une date visible et vérifier son apparition dans la grille.

@@ -2,6 +2,7 @@ const UNISTRA_ORIGINS = new Set([
   "https://monemploidutemps.unistra.fr",
   "https://monedt.unistra.fr"
 ]);
+const extensionApi = globalThis.browser ?? globalThis.chrome;
 
 function isUnistraSchedulePage(url) {
   try {
@@ -12,13 +13,13 @@ function isUnistraSchedulePage(url) {
 }
 
 async function togglePanel(tabId) {
-  const response = await chrome.tabs.sendMessage(tabId, { type: "UEXT_TOGGLE_PANEL" });
+  const response = await extensionApi.tabs.sendMessage(tabId, { type: "UEXT_TOGGLE_PANEL" });
   if (!response?.ok) {
     throw new Error(response?.message || "Le panneau n'a pas répondu.");
   }
 }
 
-chrome.action.onClicked.addListener(async (tab) => {
+extensionApi.action.onClicked.addListener(async (tab) => {
   if (!tab.id || !isUnistraSchedulePage(tab.url)) return;
 
   try {
@@ -29,11 +30,11 @@ chrome.action.onClicked.addListener(async (tab) => {
   }
 
   try {
-    await chrome.scripting.insertCSS({
+    await extensionApi.scripting.insertCSS({
       target: { tabId: tab.id },
       files: ["styles.css"]
     });
-    await chrome.scripting.executeScript({
+    await extensionApi.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["content.js"]
     });
